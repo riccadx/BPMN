@@ -328,6 +328,64 @@
             display: none !important;
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                height: auto;
+                padding: 12px;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .actions {
+                width: 100%;
+                justify-content: space-between;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+            .btn {
+                white-space: nowrap;
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            .rapid-input-container {
+                flex-direction: column;
+                bottom: 10px;
+                width: 95%;
+                padding: 12px;
+                gap: 8px;
+            }
+            .rapid-input-divider {
+                display: none;
+            }
+            .rapid-input-select {
+                width: 100%;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 8px;
+            }
+            .rapid-input-container input {
+                width: 100%;
+            }
+            .properties-panel {
+                width: calc(100% - 40px);
+                max-width: none;
+            }
+            .modal-content {
+                width: 95%;
+            }
+            .modal-body {
+                padding: 16px !important;
+            }
+            .modal-body .btn {
+                font-size: 0.8rem;
+                padding: 8px !important;
+            }
+            .radio-group {
+                gap: 8px !important;
+            }
+            .autosave-status {
+                display: none; /* Hide autosave text to save space on mobile */
+            }
+        }
     </style>
 </head>
 <body>
