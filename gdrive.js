@@ -60,22 +60,7 @@ async function fetchDriveApi(url, options = {}) {
 }
 
 async function getFolderId() {
-    const res = await fetchDriveApi("https://www.googleapis.com/drive/v3/files?q=name='BPMN Diagrams' and mimeType='application/vnd.google-apps.folder' and trashed=false");
-    const data = await res.json();
-    if (data.files && data.files.length > 0) {
-        return data.files[0].id;
-    }
-    
-    const createRes = await fetchDriveApi("https://www.googleapis.com/drive/v3/files", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            name: 'BPMN Diagrams',
-            mimeType: 'application/vnd.google-apps.folder'
-        })
-    });
-    const created = await createRes.json();
-    return created.id;
+    return '1aPbY4KRwfKn-R0_R64yN1VcCe0I12JPR';
 }
 
 class GDriveRunner {
