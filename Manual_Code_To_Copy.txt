@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPMN 初心者ガイド - カスタムBPMNシステム</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --primary-hover: #5b4bc4;
+            --bg-color: #f8f9fc;
+            --panel-bg: #ffffff;
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Inter', 'Noto Sans JP', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-primary); 
+            line-height: 1.6;
+        }
+
+        .header { 
+            height: 60px; 
+            background-color: var(--panel-bg); 
+            border-bottom: 1px solid var(--border-color); 
+            display: flex; 
+            align-items: center; 
+            padding: 0 24px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color); }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--panel-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+
+        h1 { font-size: 1.8rem; margin-bottom: 10px; color: var(--text-primary); }
+        .subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+
+        h2 { font-size: 1.4rem; color: var(--primary-color); margin-top: 40px; margin-bottom: 20px; }
+        
+        .section { margin-bottom: 40px; }
+        
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            background: #fafafa;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .card h3 { font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .card p { font-size: 0.95rem; color: var(--text-secondary); }
+        
+        .badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span>BPMN 初心者ガイド</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>BPMNとは？</h1>
+        <p class="subtitle">Business Process Model and Notation（ビジネスプロセスモデリング表記法）</p>
+
+        <div class="section">
+            <p>BPMNは、業務のプロセス（手順や流れ）を誰でも共通の記号で理解できるようにした世界標準の図解方法です。<br>
+            「誰が」「何を」「いつ」「どのような条件で」行うのかを視覚的に整理するために使われます。プログラミングの知識がなくても、業務の流れを明確に設計できます。</p>
+        </div>
+
+        <h2>🚀 新機能：超高速入力（Ultra-Rapid UX）</h2>
+        <p class="subtitle" style="margin-bottom: 20px;">クリックやドラッグを最小限に抑え、キーボードとマウスホイールだけで高速に図を作成できます。</p>
+        
+        <div class="card" style="border-left: 4px solid var(--primary-color);">
+            <span class="badge">入力</span>
+            <h3>マジックボックス（テキストから自動生成）</h3>
+            <p>画面下部にある入力ボックスにステップ（例：「申請書を提出する」）を入力し、<b>Enterキー</b>を押すだけで、自動的に図形が配置されます。<br>
+            ・<b>自動接続：</b> 既に図形が選択されている場合、Enterを押すと自動的に右側に新しい図形が配置され、矢印で繋がります。そのまま連続してタイピングするだけで、あっという間にフローが完成します。<br>
+            ・<b>図形の選択：</b> 入力ボックスの左側にあるドロップダウンメニューから、事前に図形の種類（開始、タスク、ゲートウェイなど）を指定できます。</p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--primary-color); margin-bottom: 40px;">
+            <span class="badge">変更</span>
+            <h3>マウスホイールで瞬間変身（Scroll-to-Morph）</h3>
+            <p>図形の種類を変更したい場合、わざわざメニューを開く必要はありません。<br>
+            配置された図形の上にマウスカーソルを合わせ、<b>マウスホイールを上下にスクロール</b>するだけで、図形が「タスク ↔ ゲートウェイ ↔ 開始イベント ↔ 終了イベント」と瞬時に切り替わります。入力されたテキストや繋がっている矢印もそのまま維持されます。</p>
+        </div>
+
+        <h2>基本要素の使い方</h2>
+
+        <div class="card">
+            <span class="badge">きっかけ・終了</span>
+            <h3>イベント (丸い記号)</h3>
+            <p>何かが「起きる」ことを示します。<br>
+            ・<b>開始イベント</b>: プロセスがスタートするきっかけ（例: 申請書が提出された、メールを受信した）<br>
+            ・<b>中間イベント</b>: プロセスの途中で発生する事象（例: 承認を待つ、指定の時間になる）<br>
+            ・<b>終了イベント</b>: プロセスがここで完了することを示します。</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">作業・アクション</span>
+            <h3>タスク (四角い記号)</h3>
+            <p>実行される具体的な「作業」を示します。（例: 書類を審査する、システムにデータを登録するなど）<br>
+            ・<b>ユーザータスク</b>: 人間がシステムを操作して行う作業<br>
+            ・<b>サービスタスク</b>: システムやアプリケーションが自動的にバックグラウンドで実行する作業<br>
+            ・<b>送受信タスク</b>: 外部システムや別部門とメッセージをやり取りする作業</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">条件分岐</span>
+            <h3>ゲートウェイ (ひし形の記号)</h3>
+            <p>道の「分岐」や「合流」を示します。<br>
+            ・<b>排他ゲートウェイ</b>: 条件によって進む道が1つだけ変わる場合（例: 承認された場合と、却下された場合）<br>
+            ・<b>並列ゲートウェイ</b>: 複数の作業を同時に並行して進める場合<br>
+            ・<b>包括的ゲートウェイ</b>: 条件に合う複数のルートを同時に進む場合</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">データ</span>
+            <h3>データオブジェクト / データストア</h3>
+            <p>プロセスの途中で使われる書類や情報（データオブジェクト）、およびシステム上のデータベースなどに永続的に保存される場所（データストア）を示します。</p>
+        </div>
+    </div>
+</body>
+</html>
