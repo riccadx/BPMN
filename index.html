@@ -431,7 +431,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px; vertical-align:text-bottom;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                         デバイスから開く
                     </button>
-                    <input type="file" id="localFileInput" accept=".bpmn,.xml" style="display: none;">
+                    <input type="file" id="localFileInput" style="display: none;">
                 </div>
                 
                 <h4 style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 12px; font-weight: 600;">保存されたダイアグラム (Googleドライブ)</h4>
@@ -1548,7 +1548,7 @@
                 try {
                     await modeler.importXML(event.target.result);
                     modeler.get('canvas').zoom('fit-viewport');
-                    document.getElementById('openModal').classList.remove('open');
+                    document.getElementById('fileModal').classList.remove('open');
                     
                     // Reset input so the same file can be loaded again if needed
                     document.getElementById('localFileInput').value = '';
